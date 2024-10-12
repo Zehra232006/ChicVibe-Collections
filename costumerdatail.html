@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details | Your Website</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Sliding Panel Styles */
+        .sliding-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 1001;
+        }
+
+        .sliding-panel.open {
+            right: 0;
+        }
+
+        .sliding-panel h2 {
+            font-size: 24px;
+            color: #111;
+            margin-bottom: 20px;
+        }
+
+        .sliding-panel .form-group {
+            margin-bottom: 15px;
+        }
+
+        .sliding-panel .form-group label {
+            display: block;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .sliding-panel .form-group input,
+        .sliding-panel .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .sliding-panel .form-group textarea {
+            resize: vertical;
+        }
+
+        .sliding-panel .form-group button {
+            background-color: #EE1C47;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sliding-panel .form-group button:hover {
+            background-color: #d91437;
+        }
+
+        .sliding-panel .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #fff;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .sliding-panel .close-btn:hover {
+            color: #d91437;
+        }
+
+        /* Menu Icon Styles */
+        .open-panel-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #EE1C47;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        .open-panel-btn:hover {
+            background-color: #d91437;
+        }
+    </style>
+</head>
+<body>
+    <!-- Button to trigger the sliding panel -->
+    <div class="bx bx-menu open-panel-btn" id="menu-icon">Menu</div>
+
+    <!-- Sliding Panel -->
+    <div class="sliding-panel" id="slidingPanel">
+        <button class="close-btn" id="closePanel">×</button>
+        <h2>Order Details</h2>
+        <div class="form-group">
+            <label for="customerImage">Customer Image:</label>
+            <input type="file" id="customerImage" name="customerImage">
+        </div>
+        <div class="form-group">
+            <label for="customerName">Name:</label>
+            <input type="text" id="customerName" name="customerName">
+        </div>
+        <div class="form-group">
+            <label for="customerEmail">Email ID:</label>
+            <input type="email" id="customerEmail" name="customerEmail">
+        </div>
+        <div class="form-group">
+            <label for="customerContact">Contact Number:</label>
+            <input type="text" id="customerContact" name="customerContact">
+        </div>
+        <div class="form-group">
+            <label for="totalOrder">Total Order Amount:</label>
+            <input type="text" id="totalOrder" name="totalOrder">
+        </div>
+        <div class="form-group">
+            <label for="returns">Returns:</label>
+            <textarea id="returns" name="returns" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var menuIcon = document.getElementById('menu-icon');
+            var slidingPanel = document.getElementById('slidingPanel');
+            var closePanel = document.getElementById('closePanel');
+
+            // Toggle sliding panel visibility
+            menuIcon.addEventListener('click', function() {
+                slidingPanel.classList.toggle('open');
+            });
+
+            closePanel.addEventListener('click', function() {
+                slidingPanel.classList.remove('open');
+            });
+
+            // Close the panel if clicked outside
+            document.addEventListener('click', function(event) {
+                if (!slidingPanel.contains(event.target) && event.target !== menuIcon) {
+                    slidingPanel.classList.remove('open');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

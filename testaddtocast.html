@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | Your Website</title>
+    <style>
+        /* General Styles */
+        body {
+            padding: 0;
+            font-family: 'Jost', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        /* Navbar Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: #fff;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .navmenu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navmenu li {
+            margin: 0 15px;
+        }
+
+        .navmenu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .nav-icon {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icon a {
+            margin: 0 10px;
+            color: #333;
+        }
+
+        #menu-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* Mobile Menu Styles */
+        .sliding-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: #fff;
+            box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .sliding-panel.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-menu li {
+            margin: 15px 0;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .close-btn {
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: #333;
+            cursor: pointer;
+            margin: 15px 0;
+        }
+
+        /* Overlay Styles */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .navmenu {
+                display: none; /* Hide the desktop navigation menu */
+            }
+
+            #menu-icon {
+                display: block; /* Show the menu icon */
+                margin-right: 20px;
+            }
+
+            .nav-icon {
+                flex-direction: column;
+            }
+
+            .nav-icon a {
+                margin: 10px 0;
+            }
+        }
+
+        /* Documentation Page Specific Styles */
+        .docs {
+            padding: 5% 10%;
+        }
+
+        .docs h1 {
+            font-size: 36px;
+            color: #111;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .docs article {
+            margin-bottom: 40px;
+        }
+
+        .docs h2 {
+            font-size: 28px;
+            color: #111;
+            margin-bottom: 15px;
+        }
+
+        .docs p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .zehra {
+            margin-top: 10%;
+        }
+        /* Cart Page Specific Styles */
+        .cart {
+            padding: 5% 10%;
+        }
+        
+        .cart h1 {
+            font-size: 36px;
+            color: #111;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cart-item img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        
+        .item-info {
+            flex: 1;
+        }
+        
+        .item-info h2 {
+            font-size: 20px;
+            color: #111;
+            margin-bottom: 5px;
+        }
+        
+        .item-info .price {
+            font-size: 18px;
+            color: #EE1C47;
+            margin-bottom: 10px;
+        }
+        
+        .item-info .quantity {
+            margin-bottom: 10px;
+        }
+        
+        .item-info .quantity label {
+            font-size: 16px;
+        }
+        
+        .item-info .quantity input {
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .remove-btn {
+            background: #EE1C47;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .remove-btn:hover {
+            background: #d91437;
+        }
+        
+        .cart-summary {
+            margin-top: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo"><img src="Image/logoChicVibe.png" alt=""></a>
+
+        <ul class="navmenu">
+            <li><a href="#">home</a></li>
+            <li><a href="shop.html">shop</a></li>
+            <li><a href="product.html">product</a></li>
+            <li><a href="docs.html">Docs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-icon">
+            <a href="#"><i class='bx bx-search'></i></a>
+            <a href="#"><i class='bx bx-user'></i></a>
+            <a href="addtocart.html"><i class='bx bx-cart'></i></a>
+
+            <div class="bx bx-menu" id="menu-icon">&#9776;</div> <!-- Using a hamburger icon for menu -->
+        </div>
+    </header>
+
+    <!-- Sliding Panel for Mobile Menu -->
+    <div class="sliding-panel" id="slidingPanel">
+        <button class="close-btn" id="closePanel">&times;</button>
+        <ul class="mobile-menu">
+            <li><a href="#">home</a></li>
+            <li><a href="shop.html">shop</a></li>
+            <li><a href="product.html">product</a></li>
+            <li><a href="docs.html">Docs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay for closing the menu -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Your existing sections -->
+
+    <section class="cart">
+        <h1>Your Cart</h1>
+        <div class="cart-items">
+            <!-- Cart Item 1 -->
+            <div class="cart-item">
+                <img src="https://images.unsplash.com/photo-1725610146999-a1447e9f5cd1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDEyfFM0TUtMQXNCQjc0fHxlbnwwfHx8fHw%3D" alt="Product 1">
+                <div class="item-info">
+                    <h2>Product 1</h2>
+                    <p class="price">$25.00</p>
+                    <div class="quantity">
+                        <label for="quantity1">Quantity:</label>
+                        <input type="number" id="quantity1" name="quantity1" value="1" min="1">
+                    </div>
+                    <button class="remove-btn">Remove</button>
+                </div>
+            </div>
+
+            <!-- Cart Item 2 -->
+            <div class="cart-item">
+                <img src="https://plus.unsplash.com/premium_photo-1675107359599-a2d0d8983c36?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDQ2fFM0TUtMQXNCQjc0fHxlbnwwfHx8fHw%3D" alt="Product 2">
+                <div class="item-info">
+                    <h2>Product 2</h2>
+                    <p class="price">$30.00</p>
+                    <div class="quantity">
+                        <label for="quantity2">Quantity:</label>
+                        <input type="number" id="quantity2" name="quantity2" value="1" min="1">
+                    </div>
+                    <button class="remove-btn">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-summary">
+            <h2>Cart Summary</h2>
+            <p><strong>Total Items:</strong> 2</p>
+            <p><strong>Total Cost:</strong> $55.00</p>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </section>
+
+    <footer class="zehra">
+        <p>&copy; 2024 Your Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuIcon = document.getElementById('menu-icon');
+            const slidingPanel = document.getElementById('slidingPanel');
+            const closePanel = document.getElementById('closePanel');
+            const menuOverlay = document.getElementById('menuOverlay');
+
+            menuIcon.addEventListener('click', () => {
+                slidingPanel.classList.add('active');
+                menuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent body scrolling
+            });
+
+            closePanel.addEventListener('click', () => {
+                slidingPanel.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = ''; // Restore body scrolling
+            });
+
+            menuOverlay.addEventListener('click', () => {
+                slidingPanel.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = ''; // Restore body scrolling
+            });
+        });
+    </script>
+</body>
+</html>

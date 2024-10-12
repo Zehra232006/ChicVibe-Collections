@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Your Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>/* General Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Jost', sans-serif;
+            list-style: none;
+            text-decoration: none;
+        }
+        
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 10%;
+        }
+        
+        .logo img {
+            max-width: 120px;
+            height: auto;
+        }
+        
+        .navmenu {
+            display: flex;
+        }
+        
+        .navmenu a {
+            color: #2c2c2c;
+            font-size: 16px;
+            text-transform: capitalize;
+            padding: 10px 20px;
+            font-weight: 400;
+            transition: all 0.42s ease;
+        }
+        
+        .navmenu a:hover {
+            color: #EE1C47;
+        }
+        
+        /* Contact Page Specific Styles */
+        .contact {
+            padding: 5% 10%;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .info, .form {
+            flex: 1;
+            max-width: 500px;
+        }
+        
+        .info h2, .form h2 {
+            font-size: 28px;
+            color: #111;
+            margin-bottom: 20px;
+        }
+        
+        .info p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .form label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+            color: #111;
+        }
+        
+        .form input, .form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #EE1C47;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .form button:hover {
+            background-color: #d91437;
+        }
+        
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #f1f1f1;
+            margin-top: 20px;
+        }
+        .zehra{
+            margin-top: 8%;
+        }
+        </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Image/logoChicVibe.png" alt="Logo">
+        </div>
+        <nav class="navmenu">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="docs.html">Docs</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="contact">
+        <div class="contact-info">
+            <div class="info">
+                <h2>Get in Touch</h2>
+                <p>If you have any questions or need further assistance, please reach out to us:</p>
+                <p><strong>Address:</strong>  Hussainabad, Clock Tower
+                    Chowk, Lucknow - 226003
+                     uttarpredesh,226003</p>
+                <p><strong>Email:</strong> <a href="mailto:mehdizehra19@gmail.com">mehdizehra31@gmail.com</a></p>
+                <p><strong>Phone:</strong> +91-96*****29</p>
+
+            </div>
+            <div class="form">
+                <h2>Contact Form</h2>
+                <form action="submit_form.php" method="POST">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="zehra">
+        <p>&copy; 2024 Your Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

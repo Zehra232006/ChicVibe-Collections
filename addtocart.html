@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | Your Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>/* General Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Jost', sans-serif;
+            list-style: none;
+            text-decoration: none;
+        }
+        
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 10%;
+        }
+        
+        .logo img {
+            max-width: 120px;
+            height: auto;
+        }
+        
+        .navmenu {
+            display: flex;
+        }
+        
+        .navmenu a {
+            color: #2c2c2c;
+            font-size: 16px;
+            text-transform: capitalize;
+            padding: 10px 20px;
+            font-weight: 400;
+            transition: all 0.42s ease;
+        }
+        
+        .navmenu a:hover {
+            color: #EE1C47;
+        }
+        
+        /* Cart Page Specific Styles */
+        .cart {
+            padding: 5% 10%;
+        }
+        
+        .cart h1 {
+            font-size: 36px;
+            color: #111;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cart-item img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        
+        .item-info {
+            flex: 1;
+        }
+        
+        .item-info h2 {
+            font-size: 20px;
+            color: #111;
+            margin-bottom: 5px;
+        }
+        
+        .item-info .price {
+            font-size: 18px;
+            color: #EE1C47;
+            margin-bottom: 10px;
+        }
+        
+        .item-info .quantity {
+            margin-bottom: 10px;
+        }
+        
+        .item-info .quantity label {
+            font-size: 16px;
+        }
+        
+        .item-info .quantity input {
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .remove-btn {
+            background: #EE1C47;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .remove-btn:hover {
+            background: #d91437;
+        }
+        
+        .cart-summary {
+            margin-top: 40px;
+            text-align: center;
+        }
+       
+        </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Image/logoChicVibe.png" alt="Logo">
+        </div>
+        <nav class="navmenu">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="docs.html">Docs</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <section class="cart">
+        <h1>Your Cart</h1>
+        <div class="cart-items">
+            <!-- Cart Item 1 -->
+            <div class="cart-item">
+                <img src="https://images.unsplash.com/photo-1725610146999-a1447e9f5cd1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDEyfFM0TUtMQXNCQjc0fHxlbnwwfHx8fHw%3D" alt="Product 1">
+                <div class="item-info">
+                    <h2>Product 1</h2>
+                    <p class="price">$25.00</p>
+                    <div class="quantity">
+                        <label for="quantity1">Quantity:</label>
+                        <input type="number" id="quantity1" name="quantity1" value="1" min="1">
+                    </div>
+                    <button class="remove-btn">Remove</button>
+                </div>
+            </div>
+
+            <!-- Cart Item 2 -->
+            <div class="cart-item">
+                <img src="https://plus.unsplash.com/premium_photo-1675107359599-a2d0d8983c36?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDQ2fFM0TUtMQXNCQjc0fHxlbnwwfHx8fHw%3D" alt="Product 2">
+                <div class="item-info">
+                    <h2>Product 2</h2>
+                    <p class="price">$30.00</p>
+                    <div class="quantity">
+                        <label for="quantity2">Quantity:</label>
+                        <input type="number" id="quantity2" name="quantity2" value="1" min="1">
+                    </div>
+                    <button class="remove-btn">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-summary">
+            <h2>Cart Summary</h2>
+            <p><strong>Total Items:</strong> 2</p>
+            <p><strong>Total Cost:</strong> $55.00</p>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </section>
+
+    <footer  class="zehra">
+        <p>&copy; 2024 Your Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
